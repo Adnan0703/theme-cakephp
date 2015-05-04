@@ -1,6 +1,9 @@
 # List of allowed file extensions
 extensions: [php]
 
+# Main project namespace/package prefix
+main: Cake
+
 # Title of generated documentation
 title: CakePHP
 
