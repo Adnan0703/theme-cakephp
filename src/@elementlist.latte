@@ -1,0 +1,48 @@
+{define elements}
+<li n:foreach="$elements as $element">
+	<h5><a href="{$element|elementUrl}" n:class="$element->deprecated ? deprecated, !$element->valid ? invalid">{if $namespace}{$element->shortName}{else}{$element->name}{/if}</a></h5>
+	{$element|shortDescription|noescape}
+</li>
+{/define}
+
+<div class="section" n:if="$classes">
+	<h3>Class summary</h3>
+	<ul class="summary-list">
+	{include elements, elements => $classes}
+	</ul>
+</div>
+
+<div class="section" n:if="$interfaces">
+	<h3>Interface summary</h3>
+	<ul class="summary-list">
+	{include elements, elements => $interfaces}
+	</ul>
+</div>
+
+<div class="section" n:if="$traits">
+	<h3>Traits summary</h3>
+	<ul class="summary-list">
+	{include elements, elements => $traits}
+	</ul>
+</div>
+
+<div class="section" n:if="$exceptions">
+	<h3>Exception summary</h3>
+	<ul class="summary-list">
+	{include elements, elements => $exceptions}
+	</ul>
+</div>
+
+<div class="section" n:if="$constants">
+	<h3>Constant summary</h3>
+	<ul class="summary-list">
+	{include elements, elements => $constants}
+	</ul>
+</div>
+
+<div class="section" n:if="$functions">
+	<h3>Function summary</h3>
+	<ul class="summary-list">
+	{include elements, elements => $functions}
+	</ul>
+</div>

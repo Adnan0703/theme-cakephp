@@ -1,0 +1,50 @@
+{layout '@layout.latte'}
+{var $active = 'overview'}
+
+{block title}{$config->title ?: 'Overview'}{/block}
+
+{block content}
+<div id="content">
+	<h1>{include title}</h1>
+
+	{var $group = false}
+
+		{if $namespaces}
+    	{if}
+    	<div class="section" id="namespaces">
+    		<h3>Namespaces summary</h3>
+    		<ul class="summary-list">
+    		{foreach $namespaces as $namespace}
+    		{continueIf $config->main && 0 !== strpos($namespace, $config->main)}
+    		<li>
+    			{var $group = true}
+    			<a href="{$namespace|namespaceUrl}">{$namespace}</a>
+    		</li>
+    		{/foreach}
+    		</ul>
+    	</div>
+    	{/if $iterations}
+    	{/if}
+
+	{if $packages}
+	{if}
+	<div class="section" id="packages">
+		<h3>Packages summary</h3>
+		<ul>
+		{foreach $packages as $package}
+		{continueIf $config->main && 0 !== strpos($package, $config->main)}
+		<li>
+			{var $group = true}
+			<a href="{$package|packageUrl}">{$package}</a>
+		</li>
+		{/foreach}
+		</ul>
+	</div>
+	{/if $iterations}
+	{/if}
+
+	{if ! $group}
+		{include '@elementlist.latte'}
+	{/if}
+</div>
+{/block}

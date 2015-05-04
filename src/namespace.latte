@@ -1,0 +1,22 @@
+{layout '@layout.latte'}
+{var $active = 'namespace'}
+
+{block title}{if $namespace != 'None'}Namespace {$namespace}{else}No namespace{/if}{/block}
+
+{block content}
+<div class="section namespace">
+	<h1>{if $namespace != 'None'}Namespace {$namespace|namespaceLinks:false|noescape}{else}No namespace{/if}</h1>
+
+	<div n:if="$subnamespaces">
+    	<h3>Namespaces summary</h3>
+
+    	<ul class="summary-list">
+    		<li n:foreach="$subnamespaces as $namespace">
+    			<a href="{$namespace|namespaceUrl}">{$namespace}</a>
+    		</li>
+    	</ul>
+    </div>
+
+	{include '@elementlist.latte'}
+</div>
+{/block}

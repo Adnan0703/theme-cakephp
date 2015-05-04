@@ -1,0 +1,40 @@
+# List of allowed file extensions
+extensions: [php]
+
+# Title of generated documentation
+title: CakePHP
+
+# Template config file
+templateConfig: 'src/config.neon'
+
+templateTheme: 'cakephp'
+
+# Grouping of classes
+groups: auto
+
+# Generate documentation for methods and properties with given access level
+#accessLevels: [public, protected]
+
+# Generate documentation for elements marked as internal and display internal documentation parts
+#internal: No
+
+# Generate documentation for PHP internal classes
+php: No
+
+# Generate tree view of classes, interfaces and exceptions
+tree: Yes
+
+# Generate documentation for deprecated classes, methods, properties and constants
+deprecated: true
+
+# Generate highlighted source code files
+sourceCode: Yes
+
+# Add a link to download documentation as a ZIP archive
+download: Yes
+
+# Don't display scanning and generating messages
+quiet: No
+
+# Display additional information in case of an error
+debug: Yes
