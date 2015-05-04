@@ -27,7 +27,6 @@ build-$(VERSION):
 	php apigen.phar generate \
 	    --source $(SOURCE_DIR)/src \
 		--config ./apigen.neon \
-		--exclude basics.php \
 		--destination $(BUILD_DIR)/$(VERSION)
 	# Fix rewrites file to have a opening php tag at the start
 	sed -i.bak '1i<?php' $(BUILD_DIR)/$(VERSION)/rewrite.php && rm $(BUILD_DIR)/$(VERSION)/rewrite.php.bak
