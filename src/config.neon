@@ -7,15 +7,15 @@ templates:
 	404:
 		filename: 404.html
 		template: 404.latte
-			
+
 	annotationGroup:
 		filename: annotation-group-%s.html
 		template: annotation-group.latte
-	
+
 	class:
 		filename: class-%s.html
 		template: class.latte
-			
+
 	combined:
 		filename: resources/combined.js
 		template: combined.js.latte
@@ -24,18 +24,14 @@ templates:
 		filename: constant-%s.html
 		template: constant.latte
 
-	deprecated:
-		filename: deprecated.html
-		template: deprecated.latte
-				
 	elementlist:
 		filename: elementlist.js
 		template: elementlist.js.latte
-	
+
 	function:
 		filename: function-%s.html
 		template: function.latte
-	
+
 	namespace:
 		filename: namespace-%s.html
 		template: namespace.latte
@@ -43,7 +39,7 @@ templates:
 	opensearch:
 		filename: opensearch.xml
 		template: opensearch.xml.latte
-	
+
 	overview:
 		filename: index.html
 		template: overview.latte
@@ -55,7 +51,7 @@ templates:
 	robots:
 		filename: robots.txt
 		template: robots.txt.latte
-		
+
 	source:
 		filename: source-%s.html
 		template: source.latte
@@ -71,6 +67,6 @@ templates:
 options:
 	elementDetailsCollapsed: true
 	elementsOrder: natural
-	versions: [3.0 2.6, 2.5, 2.4, 2.3, 2.2, 2.1, 2.0 1.3, 1.2]
+	versions: [3.0, 2.6, 2.5, 2.4, 2.3, 2.2, 2.1, 2.0, 1.3, 1.2]
 	activeVersion: 3.0
 

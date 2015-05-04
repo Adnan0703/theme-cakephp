@@ -13,10 +13,10 @@ templateTheme: 'cakephp'
 groups: auto
 
 # Generate documentation for methods and properties with given access level
-#accessLevels: [public, protected]
+accessLevels: [public, protected]
 
 # Generate documentation for elements marked as internal and display internal documentation parts
-#internal: No
+internal: No
 
 # Generate documentation for PHP internal classes
 php: No
@@ -25,7 +25,7 @@ php: No
 tree: Yes
 
 # Generate documentation for deprecated classes, methods, properties and constants
-deprecated: true
+annotationGroups: deprecated
 
 # Generate highlighted source code files
 sourceCode: Yes

@@ -9,27 +9,27 @@
 
 	{if $hasElements}
 		<table class="summary" id="classes" n:if="$annotationClasses">
-			<caption>Classes summary</caption>
+			<h3>Classes summary</h3>
 			{include classes, items => $annotationClasses}
 		</table>
 
 		<table class="summary" id="interfaces" n:if="$annotationInterfaces">
-			<caption>Interfaces summary</caption>
+			<h3>Interfaces summary</h3>
 			{include classes, items => $annotationInterfaces}
 		</table>
 
 		<table class="summary" id="traits" n:if="$annotationTraits">
-			<caption>Traits summary</caption>
+			<h3>Traits summary</h3>
 			{include classes, items => $annotationTraits}
 		</table>
 
 		<table class="summary" id="exceptions" n:if="$annotationExceptions">
-			<caption>Exceptions summary</caption>
+			<h3>Exceptions summary</h3>
 			{include classes, items => $annotationExceptions}
 		</table>
 
 		<table class="summary" id="methods" n:if="$annotationMethods">
-			<caption>Methods summary</caption>
+			<h3>Methods summary</h3>
 			<tr n:foreach="$annotationMethods as $method">
 				<td class="name"><a href="{$method->declaringClassName|classUrl}">{$method->declaringClassName}</a></td>
 				<td class="name"><code><a href="{$method|methodUrl}">{$method->name}()</a></code></td>
@@ -46,7 +46,7 @@
 		</table>
 
 		<table class="summary" id="constants" n:if="$annotationConstants">
-			<caption>Constants summary</caption>
+			<h3>Constants summary</h3>
 			<tr n:foreach="$annotationConstants as $constant">
 				{if $constant->declaringClassName}
 					<td class="name"><a href="{$constant->declaringClassName|classUrl}">{$constant->declaringClassName}</a></td>
@@ -67,7 +67,7 @@
 		</table>
 
 		<table class="summary" id="properties" n:if="$annotationProperties">
-			<caption>Properties summary</caption>
+			<h3>Properties summary</h3>
 			<tr n:foreach="$annotationProperties as $property">
 				<td class="name"><a href="{$property->declaringClassName|classUrl}">{$property->declaringClassName}</a></td>
 				<td class="name"><a href="{$property|propertyUrl}"><var>${$property->name}</var></a></td>
@@ -82,7 +82,7 @@
 		</table>
 
 		<table class="summary" id="functions" n:if="$annotationFunctions">
-			<caption>Functions summary</caption>
+			<h3>Functions summary</h3>
 			<tr n:foreach="$annotationFunctions as $function">
 				<td class="name" n:if="$namespaces"><a n:if="$function->namespaceName" href="{$function->namespaceName|namespaceUrl}">{$function->namespaceName}</a></td>
 				<td class="name"><code><a href="{$function|functionUrl}">{$function->shortName}</a></code></td>

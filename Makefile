@@ -17,8 +17,7 @@ clean:
 # Make a macro to save re-typing recipes multiple times
 define build3x
 build-$(VERSION):
-	cd $(SOURCE_DIR)
-	# && git checkout -f $(TAG)
+	cd $(SOURCE_DIR) && git checkout -f $(TAG)
 	# Update the config file, Remove sed crap
 	sed -i.bak "s/activeVersion: '[0-9]\.[0-9]'/activeVersion: '$(VERSION)'/" src/config.neon
 	rm src/config.neon.bak
@@ -38,20 +37,20 @@ define build2x
 build-$(VERSION):
 	cd $(SOURCE_DIR) && git checkout -f $(TAG)
 	# Update the config file, Remove sed crap
-	sed -i.bak "s/activeVersion: '[0-9]\.[0-9]'/activeVersion: '$(VERSION)'/" templates/cakephp/config.neon
-	rm templates/cakephp/config.neon.bak
+	sed -i.bak "s/activeVersion: '[0-9]\.[0-9]'/activeVersion: '$(VERSION)'/" src/config.neon
+	rm src/config.neon.bak
 	# Make the build output dir
 	[ ! -d $(BUILD_DIR) ] && mkdir $(BUILD_DIR) || true
 	# Run Apigen
-	php apigen.phar generate --source $(SOURCE_DIR)/lib \
+	php apigen.phar generate \
+		--source $(SOURCE_DIR)/lib \
 		--source $(SOURCE_DIR)/app \
 		--config ./apigen.neon \
 		--exclude $(SOURCE_DIR)/app/Config \
 		--exclude $(SOURCE_DIR)/lib/Cake/Console/Command/AppShell.php \
 		--exclude $(SOURCE_DIR)/lib/Cake/Test \
 		--exclude $(SOURCE_DIR)/lib/Cake/Console/Templates \
-		--destination $(BUILD_DIR)/$(VERSION) \
-		--template-config ./templates/cakephp/config.neon
+		--destination $(BUILD_DIR)/$(VERSION)
 	# Fix rewrites file to have a opening php tag at the start
 	sed -i.bak '1i<?php' $(BUILD_DIR)/$(VERSION)/rewrite.php && rm $(BUILD_DIR)/$(VERSION)/rewrite.php.bak
 endef
@@ -60,19 +59,19 @@ define build1x
 build-$(VERSION):
 	cd $(SOURCE_DIR) && git checkout -f $(TAG)
 	# Update the config file, Remove sed crap
-	sed -i.bak "s/activeVersion: '[0-9]\.[0-9]'/activeVersion: '$(VERSION)'/" templates/cakephp/config.neon
-	rm templates/cakephp/config.neon.bak
+	sed -i.bak "s/activeVersion: '[0-9]\.[0-9]'/activeVersion: '$(VERSION)'/" src/config.neon
+	rm src/config.neon.bak
 	# Make the build output dir
 	[ ! -d $(BUILD_DIR) ] && mkdir $(BUILD_DIR) || true
 	# Run Apigen
-	php apigen.php --source $(SOURCE_DIR)/cake/libs \
+	php apigen.phar generate \
+		--source $(SOURCE_DIR)/cake/libs \
 		--source $(SOURCE_DIR)/cake/console/libs \
 		--config ./apigen.neon \
 		--exclude $(SOURCE_DIR)/cake/tests \
 		--exclude $(SOURCE_DIR)/cake/libs/overloadable_php4.php \
 		--exclude $(SOURCE_DIR)/cake/console/templates \
-		--destination $(BUILD_DIR)/$(VERSION) \
-		--template-config ./templates/cakephp/config.neon
+		--destination $(BUILD_DIR)/$(VERSION)
 	# Fix rewrites file to have a opening php tag at the start
 	sed -i.bak '1i<?php' $(BUILD_DIR)/$(VERSION)/rewrite.php && rm $(BUILD_DIR)/$(VERSION)/rewrite.php.bak
 endef
